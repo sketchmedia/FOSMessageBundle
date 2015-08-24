@@ -3,7 +3,7 @@
 namespace FOS\MessageBundle\EntityManager;
 
 use FOS\MessageBundle\ModelManager\ThreadManager as BaseThreadManager;
-use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use FOS\MessageBundle\Model\ThreadInterface;
 use FOS\MessageBundle\Model\ReadableInterface;
 use FOS\MessageBundle\Model\ParticipantInterface;
@@ -51,12 +51,12 @@ class ThreadManager extends BaseThreadManager
     /**
      * Constructor.
      *
-     * @param EntityManager     $em
-     * @param string            $class
-     * @param string            $metaClass
-     * @param MessageManager    $messageManager
+     * @param EntityManagerInterface     $em
+     * @param string                     $class
+     * @param string                     $metaClass
+     * @param MessageManager             $messageManager
      */
-    public function __construct(EntityManager $em, $class, $metaClass, MessageManager $messageManager)
+    public function __construct(EntityManagerInterface $em, $class, $metaClass, MessageManager $messageManager)
     {
         $this->em             = $em;
         $this->repository     = $em->getRepository($class);

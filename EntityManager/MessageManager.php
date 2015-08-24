@@ -3,7 +3,7 @@
 namespace FOS\MessageBundle\EntityManager;
 
 use FOS\MessageBundle\ModelManager\MessageManager as BaseMessageManager;
-use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use FOS\MessageBundle\Model\MessageInterface;
 use FOS\MessageBundle\Model\ReadableInterface;
 use FOS\MessageBundle\Model\ParticipantInterface;
@@ -40,11 +40,11 @@ class MessageManager extends BaseMessageManager
     /**
      * Constructor.
      *
-     * @param EntityManager     $em
-     * @param string            $class
-     * @param string            $metaClass
+     * @param EntityManagerInterface  $em
+     * @param string                  $class
+     * @param string                  $metaClass
      */
-    public function __construct(EntityManager $em, $class, $metaClass)
+    public function __construct(EntityManagerInterface $em, $class, $metaClass)
     {
         $this->em         = $em;
         $this->repository = $em->getRepository($class);
